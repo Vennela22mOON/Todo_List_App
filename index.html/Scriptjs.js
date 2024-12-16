@@ -3,18 +3,12 @@ const addTaskButton = document.getElementById('addTaskButton');
 const taskList = document.getElementById('taskList');
 const taskCount = document.getElementById('taskCount');
 let incompleteTaskCount = 0;
-
-// Update task count display
 function updateTaskCount() {
     taskCount.textContent = `Incomplete tasks: ${incompleteTaskCount}`;
 }
-
-// Create a task item
 function createTask(taskText) {
     const taskItem = document.createElement('li');
     taskItem.className = 'task-item';
-
-    // Checkbox for task completion
     const taskCheckbox = document.createElement('input');
     taskCheckbox.type = 'checkbox';
     taskCheckbox.className = 'task-checkbox';
@@ -45,16 +39,12 @@ function createTask(taskText) {
         taskList.removeChild(taskItem);
         updateTaskCount();
     });
-
-    // Append elements to task item
     taskItem.appendChild(taskCheckbox);
     taskItem.appendChild(taskSpan);
     taskItem.appendChild(deleteButton);
 
     return taskItem;
 }
-
-// Add task button event listener
 addTaskButton.addEventListener('click', () => {
     const taskText = taskInput.value.trim();
     if (taskText === '') {
@@ -67,6 +57,4 @@ addTaskButton.addEventListener('click', () => {
     updateTaskCount();
     taskInput.value = '';
 });
-
-// Update initial task count
 updateTaskCount();
